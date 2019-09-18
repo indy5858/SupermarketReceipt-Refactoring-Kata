@@ -32,6 +32,7 @@ public class ReceiptPrinter {
             }
             result.append(line);
         }
+
         for (Discount discount : receipt.getDiscounts()) {
             String productPresentation = discount.getProduct().getName();
             String pricePresentation = String.format(Locale.UK, "%.2f", discount.getDiscountAmount());
@@ -54,8 +55,7 @@ public class ReceiptPrinter {
     }
 
     private static String presentQuantity(ReceiptItem item) {
-        return ProductUnit.Each.equals(item.getProduct().getUnit())
-                ? String.format("%x", (int)item.getQuantity())
+        return ProductUnit.Each.equals(item.getProduct().getUnit()) ? String.format("%x", (int) item.getQuantity())
                 : String.format(Locale.UK, "%.3f", item.getQuantity());
     }
 
